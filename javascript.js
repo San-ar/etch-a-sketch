@@ -25,6 +25,13 @@ gridSizeBtn.addEventListener("click", (e) => {
     createGrid(gridSize);
 });
 
+const clearBtn = document.querySelector(".clear-button");
+
+clearBtn.addEventListener("click", (e) => {
+    removePrevGrid();
+    createGrid(gridSize);
+});
+
 function colorChange() {
     colorToggle.addEventListener('click', (e) => {
 
@@ -45,7 +52,6 @@ function createGrid(gridSize) {
 
             if (colorStatus == "red"){
                 sketchColor = randomRGB();
-                console.log(sketchColor);
             } else if (colorStatus == "black"){
                 sketchColor = "rgb(0,0,0)";
             }
@@ -62,7 +68,6 @@ function addHoverEffect(item, sketchColor) {
         const newOpacity = Math.min(currentOpacity + 0.1, 1); // Increment opacity by 0.1, max 1
         target.style.opacity = newOpacity;
         target.style.background = sketchColor;
-        console.log(`Updated opacity: ${newOpacity}`);
     });
 }
 

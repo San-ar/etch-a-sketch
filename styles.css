@@ -14,7 +14,8 @@ html {
     margin-bottom: 30px;
 }
 
-.grid-button {
+.grid-button,
+.clear-button {
     align-items: center;
     background-color: initial;
     background-image: linear-gradient(rgb(243, 62, 0), rgb(167, 43, 0) 50%);
@@ -38,12 +39,14 @@ html {
     vertical-align: baseline;
 }
 
-.grid-button:hover {
+.grid-button:hover,
+.clear-button:hover {
     background-image: linear-gradient(rgb(243, 62, 0), rgb(116, 29, 0) 50%);
 }
 
 @media (min-width: 768px) {
-    .grid-button {
+    .grid-button,
+    .clear-button {
         font-size: 21px;
         padding: 18px 34px;
     }
