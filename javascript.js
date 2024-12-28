@@ -40,6 +40,7 @@ function createGrid(gridSize) {
         for (let i = 0; i < gridSize; i++) {
             const cell = document.createElement("div");
             cell.classList.add('cell');
+            cell.style.opacity = 0;
             row.appendChild(cell);
 
             if (colorStatus == "red"){
@@ -56,7 +57,12 @@ function createGrid(gridSize) {
 
 function addHoverEffect(item, sketchColor) {
     item.addEventListener("mouseenter", (e) => {
-        e.target.style.background = sketchColor;
+        const target = e.target;
+        const currentOpacity = parseFloat(target.style.opacity) || 0;
+        const newOpacity = Math.min(currentOpacity + 0.1, 1); // Increment opacity by 0.1, max 1
+        target.style.opacity = newOpacity;
+        target.style.background = sketchColor;
+        console.log(`Updated opacity: ${newOpacity}`);
     });
 }
 

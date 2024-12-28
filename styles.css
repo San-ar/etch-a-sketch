@@ -125,6 +125,4 @@ input[type=checkbox]{
   label:active:after {
     width: 80px;
   }
-  .color-button {
-    border: 1px solid black;
-  }
+  
