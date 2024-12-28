@@ -1,15 +1,22 @@
 let gridSize = 16;
+let sketchColor = "rgb(0,0,0)";
+let colorStatus = "black";
 
 const grid = document.querySelector(".grid");
 
 const gridSizeBtn = document.querySelector(".grid-button");
 
+const colorToggle = document.querySelector(".color-button");
+
 createGrid(gridSize);
+
+colorChange();
+
 
 gridSizeBtn.addEventListener("click", (e) => {
     let size = prompt("Enter your prefered grid size:", "Max 100");
 
-    if (size <= 100){
+    if (size <= 100) {
         gridSize = size;
     } else {
         alert("Invalid Input");
@@ -18,7 +25,14 @@ gridSizeBtn.addEventListener("click", (e) => {
     createGrid(gridSize);
 });
 
-function createGrid (gridSize) {
+function colorChange() {
+    colorToggle.addEventListener('click', (e) => {
+
+        assignColor();
+    });
+}
+
+function createGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
         const row = document.createElement("div");
         row.classList.add('row');
@@ -27,20 +41,49 @@ function createGrid (gridSize) {
             const cell = document.createElement("div");
             cell.classList.add('cell');
             row.appendChild(cell);
-    
-            addHoverEffect(cell);
+
+            if (colorStatus == "red"){
+                sketchColor = randomRGB();
+                console.log(sketchColor);
+            } else if (colorStatus == "black"){
+                sketchColor = "rgb(0,0,0)";
+            }
+            
+            addHoverEffect(cell, sketchColor);
         }
     }
 }
 
-function addHoverEffect (item) {
+function addHoverEffect(item, sketchColor) {
     item.addEventListener("mouseenter", (e) => {
-        e.target.style.background = "black";
+        e.target.style.background = sketchColor;
     });
 }
 
-function removePrevGrid () {
+function assignColor() {
+    if (sketchColor == "rgb(0,0,0)") {
+        // sketchColor = "red";
+        colorStatus = "red";
+        removePrevGrid();
+        createGrid(gridSize);
+    } else {
+        // sketchColor = "black";
+        colorStatus = "black";
+        removePrevGrid();
+        createGrid(gridSize);
+    }
+}
+
+function removePrevGrid() {
     while (grid.hasChildNodes()) {
         grid.removeChild(grid.firstChild);
     }
+}
+
+function randColorNum() {
+    return Math.floor(Math.random() * 256);
+}
+
+function randomRGB() {
+    return `rgb(${randColorNum()},${randColorNum()},${randColorNum()})`;
 }
