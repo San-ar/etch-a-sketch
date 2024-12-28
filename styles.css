@@ -1,6 +1,5 @@
 * {
-    /* box-sizing: border-box; */
-    /* border: 1px solid black; */
+    box-sizing: border-box;
 }
 
 html {
@@ -8,6 +7,46 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.grid-button-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grid-button {
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgb(243, 62, 0), rgb(167, 43, 0) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgb(167, 43, 0, 0.24) 0 2px 2px, rgb(243, 62, 0, 0.4) 0 8px 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 16px;
+    margin: 0;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px, rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+}
+
+.grid-button:hover {
+    background-image: linear-gradient(rgb(243, 62, 0), rgb(116, 29, 0) 50%);
+}
+
+@media (min-width: 768px) {
+    .grid-button {
+        font-size: 21px;
+        padding: 18px 34px;
+    }
 }
 
 .device {
@@ -29,30 +68,18 @@ html {
     color: #faf29f;
 }
 
-.grid-container {
-    width: 800px;
-    height: 320px;
-    border-radius: 2px;
-    background-color: white;
-}
-
 .grid {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: white;
     width: 800px;
     height: 320px;
 }
 
-.row {
-    display: flex;
-    border: 1px solid black;
-    flex: 1;
-}
-
+.row,
 .cell {
     display: flex;
     border: 1px solid black;
     flex: 1;
 }
-
